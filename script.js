@@ -1,6 +1,5 @@
 
 
-
 // Generate the computers move
 function computerPlay(){
     const generate = createRndInteger(1,3)
@@ -20,9 +19,8 @@ function createRndInteger(min, max){
     return Math.floor(Math.random()*(max-min+1)) + min;
 }
 
-let playerSelection = window.prompt("Enter your selection: ");
 
-
+//output winner of a given round of RPS 
 function playRound(playerSelection, computerSelection){
     playerSelection = playerSelection.toLowerCase();
     playerSelection = capitalizeFirstLetter(playerSelection);
@@ -31,18 +29,23 @@ function playRound(playerSelection, computerSelection){
         return "Tie! Play again";
     }
     else if(result == true){
-        return "You win ";
+        return `You win! ${playerSelection} beats ${computerSelection}.`;
+    }
+    else{
+        return `You lose! ${computerSelection} beats ${playerSelection}.`;
     }
 }
 
+
+//helper function for playRound, determines winner of RPS round
 function rpsWinner(playerSelection, computerSelection){
-    const r = "rock";
-    const p = "paper";
-    const s = "scissors";
+    const r = "Rock";
+    const p = "Paper";
+    const s = "Scissors";
     if(playerSelection==computerSelection){
         return null;
     }
-    else if( (playerSelection== r && computerSelection== s) || (playerSelection==p && computerSelection==r) || (playerSelection==s && computerSelection==p)){
+    else if( playerSelection== r && computerSelection== s || playerSelection==p && computerSelection==r || playerSelection==s && computerSelection==p){
         return true;
     }
     else{
@@ -50,8 +53,16 @@ function rpsWinner(playerSelection, computerSelection){
     }
 }
 
+
+//Helper to capitalize the first letter of a string
 function capitalizeFirstLetter(string){
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
-console.log(capitalizeFirstLetter("dog"))
+
+const playerSelection = window.prompt("Enter your selection: ")
+console.log(playerSelection)
+const computerSelection = computerPlay()
+console.log(computerSelection)
+console.log(rpsWinner(playerSelection, computerSelection))
+console.log(playRound(playerSelection, computerSelection))
