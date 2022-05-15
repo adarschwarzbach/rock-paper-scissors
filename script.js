@@ -26,13 +26,16 @@ function playRound(playerSelection, computerSelection){
     playerSelection = capitalizeFirstLetter(playerSelection);
     const result = rpsWinner(playerSelection, computerSelection);
     if(result==null){
-        return "Tie! Play again";
+        console.log("Tie! Shoot again.");
+        return null;
     }
     else if(result == true){
-        return `You win! ${playerSelection} beats ${computerSelection}.`;
+        console.log(`You win the round! ${playerSelection} beats ${computerSelection}.`);
+        return true;
     }
     else{
-        return `You lose! ${computerSelection} beats ${playerSelection}.`;
+        console.log(`You lose the round! ${computerSelection} beats ${playerSelection}.`)
+        return false;
     }
 }
 
@@ -60,9 +63,38 @@ function capitalizeFirstLetter(string){
 }
 
 
-const playerSelection = window.prompt("Enter your selection: ")
-console.log(playerSelection)
-const computerSelection = computerPlay()
-console.log(computerSelection)
-console.log(rpsWinner(playerSelection, computerSelection))
-console.log(playRound(playerSelection, computerSelection))
+function game(){
+    console.log("Time to play Rock Paper Scissors. The game is best of 5");
+    let computerScore = 0;
+    let playerScore = 0;
+    let round = 1;
+    while(round<=5){
+        console.log(`Round ${round}`);
+        let playerSelection =  window.prompt("Enter your selection: ");
+        const computerSelection = computerPlay();
+        const result = playRound(playerSelection, computerSelection);
+        if(result==true){
+            ++round;
+            ++playerScore
+        }
+        if(result==false){
+            ++round;
+            ++computerScore
+        }
+    }
+    if(playerScore==3){
+        console.log("The computer wins the series 3-2!")
+    }
+    else{
+        console.log("You win the series 3-2!")
+    }
+}
+
+console.log(game())
+
+// const playerSelection = window.prompt("Enter your selection: ")
+// console.log(playerSelection)
+// const computerSelection = computerPlay()
+// console.log(computerSelection)
+// console.log(rpsWinner("Paper", "Rock"))
+// console.log(createRndInteger(1,3))
