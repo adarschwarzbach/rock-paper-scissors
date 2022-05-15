@@ -62,7 +62,7 @@ function capitalizeFirstLetter(string){
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
-
+// Plays a best of 5 game based on player input
 function game(){
     console.log("Time to play Rock Paper Scissors. The game is best of 5");
     let computerScore = 0;
