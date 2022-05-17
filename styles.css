@@ -1,0 +1,90 @@
+#header{
+    background-color: #01012b;
+    padding: 24px;
+    display: flex;
+    justify-content: center;
+    color: #05d9e8;
+    text-shadow: 6px 3px #005678;
+    font-size: 80px;
+    font-weight: bold;
+    font-family: "iceland", cursive;
+}
+
+#sub-title{
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+
+.lead{
+    font-size: 32px;
+    font-weight: bold;
+}
+.standard{
+    font-size: 24px;
+}
+
+#round{
+    padding: 64px;
+    display: flex;
+    justify-content: center;
+}
+
+#moves{
+    display: flex;
+    gap: 54px;
+    justify-content: center;
+}
+
+.interior{
+    width: 100%;
+}
+
+button{
+    padding: 16px;
+    background: linear-gradient(-45deg, #284768, #e73c7e, #23a6d5, #7925adf6, #1c1facf6);
+    background-size: 300% 200%;
+    animation: gradient 15s ease infinite;
+    border: 8px black solid;
+    border-radius: 15%;
+    width: 200px;
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+
+body, a{
+    margin: 0px;
+    background-color: #a7a7b6;
+    font-family: OCR A Std, monospace;
+    color: #d1f7ff;
+    font-size: 24px;
+}
+
+#footer{
+    padding: 16px;
+    display: flex;
+    justify-content: center;
+    margin-top: auto;
+
+}
+
+a{
+    text-decoration: none;
+    font-size: 16px;
+}
