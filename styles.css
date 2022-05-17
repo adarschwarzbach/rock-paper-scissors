@@ -32,13 +32,29 @@
 #round{
     padding: 64px;
     display: flex;
+    margin-top: auto;
     justify-content: center;
+    gap: 64px;
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+}
+
+.load{
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+
 }
 
 #moves{
     display: flex;
     gap: 54px;
     justify-content: center;
+    justify-self: flex-end;
 }
 
 .interior{
@@ -52,10 +68,10 @@ button{
     animation: gradient 15s ease infinite;
     border: 8px black solid;
     border-radius: 15%;
-    width: 200px;
+    width: 150px;
 }
 
-@keyframes gradient {
+/* @keyframes gradient {
     0% {
         background-position: 0% 50%;
     }
@@ -65,26 +81,47 @@ button{
     100% {
         background-position: 0% 50%;
     }
-}
+} */
 
 
-body, a{
+body{
     margin: 0px;
     background-color: #a7a7b6;
     font-family: OCR A Std, monospace;
     color: #d1f7ff;
     font-size: 24px;
+    text-align: center; 
+    /* support footer when window is resized */
+    margin-bottom: 50px; 
+    /* display: flex;
+    flex-direction: column;
+    min-height: 100vh; */
 }
 
+
 #footer{
-    padding: 16px;
+    background-color: #01012b;
+    padding: 8px;
     display: flex;
     justify-content: center;
-    margin-top: auto;
+    align-items: center;
+    /* micheal osman footer */
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+}
 
+/* support footer when window is resized */
+html{
+    position: relative;
+    min-height: 100%;
 }
 
 a{
     text-decoration: none;
     font-size: 16px;
+    color: #d1f7ff;
 }
+
