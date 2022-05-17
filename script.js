@@ -63,34 +63,34 @@ function capitalizeFirstLetter(string){
 }
 
 // Plays a best of 5 game based on player input
-function game(){
-    console.log("Time to play Rock Paper Scissors. The game is best of 5");
-    let computerScore = 0;
-    let playerScore = 0;
-    let round = 1;
-    while(round<=5){
-        console.log(`Round ${round}`);
-        let playerSelection =  window.prompt("Enter your selection: ");
-        const computerSelection = computerPlay();
-        const result = playRound(playerSelection, computerSelection);
-        if(result==true){
-            ++round;
-            ++playerScore
-        }
-        if(result==false){
-            ++round;
-            ++computerScore
-        }
-    }
-    if(playerScore==3){
-        console.log("The computer wins the series 3-2!")
-    }
-    else{
-        console.log("You win the series 3-2!")
-    }
-}
+// function game(){
+//     console.log("Time to play Rock Paper Scissors. The game is best of 5");
+//     let computerScore = 0;
+//     let playerScore = 0;
+//     let round = 1;
+//     while(round<=5){
+//         console.log(`Round ${round}`);
+//         let playerSelection =  window.prompt("Enter your selection: ");
+//         const computerSelection = computerPlay();
+//         const result = playRound(playerSelection, computerSelection);
+//         if(result==true){
+//             ++round;
+//             ++playerScore
+//         }
+//         if(result==false){
+//             ++round;
+//             ++computerScore
+//         }
+//     }
+//     if(playerScore==3){
+//         console.log("The computer wins the series 3-2!")
+//     }
+//     else{
+//         console.log("You win the series 3-2!")
+//     }
+// }
 
-console.log(game())
+// console.log(game())
 
 // const playerSelection = window.prompt("Enter your selection: ")
 // console.log(playerSelection)
