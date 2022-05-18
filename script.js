@@ -137,7 +137,7 @@ rock.addEventListener('click', function (e) {
     const computerSelection = computerPlay();
     console.log(computerSelection);
     const result = playRound('Rock', computerSelection);
-    updateDisplay(result, 'Rock', computerSelection);
+    updateGame(result, 'Rock', computerSelection);
 
   });
 
@@ -145,41 +145,28 @@ paper.addEventListener('click', function (e) {
     const computerSelection = computerPlay();
     console.log(computerSelection);
     const result = playRound('Paper', computerSelection);
-    updateDisplay(result, 'Paper', computerSelection);
+    updateGame(result, 'Paper', computerSelection);
 });
 
 scissors.addEventListener('click', function (e) {
     const computerSelection = computerPlay();
     console.log(computerSelection);
     const result = playRound('Scissors', computerSelection);
-    updateDisplay(result, 'Scissors', computerSelection);
+    updateGame(result, 'Scissors', computerSelection);
 });
 
-function updateDisplay(result, playerSelection, computerSelection){
+
+function  updateGame(result, playerSelection, computerSelection){
     updateImages(playerSelection, computerSelection);
     updateResult(result, playerSelection, computerSelection);
+    endGame(playerSelection,computerScore);
 }
 
-function updateScore(result){
-    if(result){
-        ++playerScore;
-        pScore.textContent=0;
-        
-    }
-    else if(result==false){
-        ++computerScore;
-        cScore.textContent= 0;
-    }
-    else{
-
-    }
-}
 
 function updateResult(result, playerSelection, computerSelection){
     if(result){
         roundResult.textContent = "You won!";
         resultInfo.textContent = `${playerSelection} beats ${computerSelection}`;
-
         ++playerScore;
         pScore.textContent=playerScore;
 
@@ -187,7 +174,6 @@ function updateResult(result, playerSelection, computerSelection){
     else if(result==false){
         roundResult.textContent = "You lost";
         resultInfo.textContent = `${computerSelection} beats ${playerSelection}`;
-
         ++computerScore;
         cScore.textContent= computerScore;
     }
@@ -201,24 +187,30 @@ function updateImages(playerSelection, computerSelection){
     switch(playerSelection){
         case 'Rock':
             playerImage.src='images/rock.png';
+            playerImage.style.borderRadius = "10%";
             break;
         case 'Paper':
             playerImage.src='images/paper.png';
+            playerImage.style.borderRadius = "10%";
             break;
         case 'Scissors':
             playerImage.src='images/scissors.png';
+            playerImage.style.borderRadius = "10%";
             break;
     }
     console.log(computerSelection);
     switch(computerSelection){
         case 'Rock':
             computerImage.src='images/rock.png';
+            computerImage.style.borderRadius = "10%";
             break;
         case 'Paper':
             computerImage.src='images/paper.png';
+            computerImage.style.borderRadius = "10%";
             break;
         case 'Scissors':
             computerImage.src='images/scissors.png';
+            computerImage.style.borderRadius = "10%";
             break;
     }
 }
@@ -227,9 +219,9 @@ function updateImages(playerSelection, computerSelection){
 
 
 
-function endGame(){
-    if(Math.max(playerScore,computerScore)=5){
-
+function endGame(playerScore, computerScore){
+    if(playerScore>=5 || computerScore >= 5){
+        
     }
 }
 
