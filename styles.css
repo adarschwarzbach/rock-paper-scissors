@@ -119,6 +119,7 @@ button:active{
 #footer{
     background-color: #01012b;
     padding: 8px;
+    padding-bottom: 10px;
     display: flex;
     justify-content: center;
     align-items: center;
