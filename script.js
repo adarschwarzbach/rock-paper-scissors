@@ -121,17 +121,18 @@ let playerImage = document.getElementById('playerImage');
 let computerImage = document.getElementById('computerImage');
 
 
-
-
-
-// select score spans
+// select score spans and initalize game score
 let pScore = document.getElementById('playerScore');
 let  cScore = document.getElementById('computerScore');
-
 pScore.textContent=0
 cScore.textContent=0
 
-console.log(playerScore)
+// select modal
+
+
+
+
+
 
 rock.addEventListener('click', function (e) {
     const computerSelection = computerPlay();
