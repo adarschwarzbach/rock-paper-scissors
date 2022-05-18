@@ -124,13 +124,40 @@ let computerImage = document.getElementById('computerImage');
 // select score spans and initalize game score
 let pScore = document.getElementById('playerScore');
 let  cScore = document.getElementById('computerScore');
-pScore.textContent=0
-cScore.textContent=0
+pScore.textContent=0;
+cScore.textContent=0;
 
 // select modal
 
+let modal = document.getElementById('modal');
+let description = document.getElementById('description');
+const replay = document.getElementById('replay');
 
 
+function endGame(playerScore, computerScore){
+    if(playerScore ==5){
+        modal.style.display = "block";
+        description.textContent = `You have defeated the computer!\n Final score: ${playerScore} - ${computerScore}`;
+    }
+    if(computerScore == 5){
+        modal.style.display = "block";
+        description.textContent = `You have been defeated.\n Final score: ${computerScore} - ${playerScore}`
+    }
+}
+
+replay.addEventListener('click', function (e) {
+    modal.style.display = "none";
+    playerScore=0;
+    computerScore=0;
+    playerImage.src='images/playerLoad.gif';
+    computerImage.src='images/villianLoad.gif';
+    playerImage.style.borderRadius = "50%";
+    computerImage.style.borderRadius = "50%";
+    pScore.textContent=0;
+    cScore.textContent=0;
+    roundResult.textContent = "Select Your Attack";
+    resultInfo.textContent = "The first player to score 5 points wins";
+  });
 
 
 
@@ -160,7 +187,8 @@ scissors.addEventListener('click', function (e) {
 function  updateGame(result, playerSelection, computerSelection){
     updateImages(playerSelection, computerSelection);
     updateResult(result, playerSelection, computerSelection);
-    endGame(playerSelection,computerScore);
+    console.log(playerScore);
+    endGame(playerScore,computerScore);
 }
 
 
@@ -220,11 +248,7 @@ function updateImages(playerSelection, computerSelection){
 
 
 
-function endGame(playerScore, computerScore){
-    if(playerScore>=5 || computerScore >= 5){
-        
-    }
-}
+
 
 
 
