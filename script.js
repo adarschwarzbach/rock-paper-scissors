@@ -1,34 +1,10 @@
-//UI
-
-// select play buttons
-const rock = document.getElementById('rock');
-const paper = document.getElementById('paper');
-const scissors =  document.getElementById('scissors');
-
-rock.addEventListener('click', function (e) {
-    const computerSelection = computerPlay();
-    console.log(computerSelection);
-    playRound('rock', computerSelection);
-  });
-
-paper.addEventListener('click', function (e) {
-    const computerSelection = computerPlay();
-    console.log(computerSelection);
-    playRound('paper', computerSelection);
-});
-
-scissors.addEventListener('click', function (e) {
-    const computerSelection = computerPlay();
-    console.log(computerSelection);
-    playRound('scissors', computerSelection);
-});
-
-
-
-
 //GAME
 
 // Generate the computers move
+
+let playerScore = 0;
+let computerScore = 0;
+
 function computerPlay(){
     const generate = createRndInteger(1,3)
     if(generate==1){
@@ -126,3 +102,54 @@ function capitalizeFirstLetter(string){
 // console.log(computerSelection)
 // console.log(rpsWinner("Paper", "Rock"))
 // console.log(createRndInteger(1,3))
+
+
+
+
+
+//UI
+
+// select play buttons
+const rock = document.getElementById('rock');
+const paper = document.getElementById('paper');
+const scissors =  document.getElementById('scissors');
+
+// select container contents
+
+// select score spans
+let pScore = document.getElementById('playerScore');
+let  cScore = document.getElementById('computerScore');
+
+console.log(playerScore)
+
+rock.addEventListener('click', function (e) {
+    const computerSelection = computerPlay();
+    console.log(computerSelection);
+    const result = playRound('rock', computerSelection);
+
+  });
+
+paper.addEventListener('click', function (e) {
+    const computerSelection = computerPlay();
+    console.log(computerSelection);
+    const result = playRound('paper', computerSelection);
+});
+
+scissors.addEventListener('click', function (e) {
+    const computerSelection = computerPlay();
+    console.log(computerSelection);
+    const result = playRound('scissors', computerSelection);
+    if(result){
+        ++playerScore;
+    }
+    else if(!result){
+        ++computerScore
+    }
+    else{
+
+    }
+});
+
+
+
+
