@@ -95,7 +95,7 @@ const replay = document.getElementById('replay');
 // Add on-click attributes for each RPS move and call helpers to update game/UI
 rock.addEventListener('click', function (e) {
     const computerSelection = computerPlay();
-    console.log(computerSelection);
+    resultInfo.style.opacity = "100%"
     const result = playRound('Rock', computerSelection);
     updateGame(result, 'Rock', computerSelection);
 
@@ -103,14 +103,14 @@ rock.addEventListener('click', function (e) {
 
 paper.addEventListener('click', function (e) {
     const computerSelection = computerPlay();
-    console.log(computerSelection);
+    resultInfo.style.opacity = "100%"
     const result = playRound('Paper', computerSelection);
     updateGame(result, 'Paper', computerSelection);
 });
 
 scissors.addEventListener('click', function (e) {
     const computerSelection = computerPlay();
-    console.log(computerSelection);
+    resultInfo.style.opacity = "100%"
     const result = playRound('Scissors', computerSelection);
     updateGame(result, 'Scissors', computerSelection);
 });
@@ -141,7 +141,7 @@ function updateResult(result, playerSelection, computerSelection){
     }
     else{
         roundResult.textContent = "Tie. Shoot again.";
-        resultInfo.textContent = '';
+        resultInfo.style.opacity = "0%"
     }
 }
 
@@ -161,7 +161,6 @@ function updateImages(playerSelection, computerSelection){
             playerImage.style.borderRadius = "10%";
             break;
     }
-    console.log(computerSelection);
     switch(computerSelection){
         case 'Rock':
             computerImage.src='images/rock.png';
