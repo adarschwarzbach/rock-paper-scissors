@@ -161,11 +161,48 @@ button:active{
     overflow: hidden;
 }
 
+#modal{
+    padding: 24px;
+    background-color: #01012b;
+    background-blend-mode: inherit;
+    /* display: none;  */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+   
+}
+
+.modal-container{
+    background: #005678;
+    /* display: flex;
+    flex-direction: column;
+    align-items: center; */
+}
+
+#replay{
+    background: #05d9e8;
+}
+#replay:hover{
+    border-radius: 20%;
+    border-width: 8px;
+}
+
+#replay:active{
+    /* play around with ux*/
+    border-color: #01012b;
+    border-style: outset;
+}
+
 /* support footer when window is resized */
 html{
     position: relative;
     min-height: 100%;
 }
+
 
 a{
     text-decoration: none;
