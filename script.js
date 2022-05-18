@@ -1,4 +1,32 @@
+//UI
 
+// select play buttons
+const rock = document.getElementById('rock');
+const paper = document.getElementById('paper');
+const scissors =  document.getElementById('scissors');
+
+rock.addEventListener('click', function (e) {
+    const computerSelection = computerPlay();
+    console.log(computerSelection);
+    playRound('rock', computerSelection);
+  });
+
+paper.addEventListener('click', function (e) {
+    const computerSelection = computerPlay();
+    console.log(computerSelection);
+    playRound('paper', computerSelection);
+});
+
+scissors.addEventListener('click', function (e) {
+    const computerSelection = computerPlay();
+    console.log(computerSelection);
+    playRound('scissors', computerSelection);
+});
+
+
+
+
+//GAME
 
 // Generate the computers move
 function computerPlay(){

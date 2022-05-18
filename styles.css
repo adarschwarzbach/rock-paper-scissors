@@ -11,7 +11,7 @@
 }
 
 #sub-title{
-    padding: 32px;
+    padding: 24px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -30,16 +30,18 @@
 }
 
 #round{
-    padding: 64px;
+    padding: 48px;
     display: flex;
     margin-top: auto;
     justify-content: center;
+    align-content: center;
     gap: 64px;
 }
 
 .container{
     display: flex;
     flex-direction: column;
+    align-items: center;
 }
 
 .load{
