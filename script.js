@@ -1,10 +1,10 @@
-//GAME
+// GAMEPLAY
 
-// Generate the computers move
-
+// Initalize overall score
 let playerScore = 0;
 let computerScore = 0;
 
+// Generate the computers move
 function computerPlay(){
     const generate = createRndInteger(1,3)
     if(generate==1){
@@ -24,27 +24,24 @@ function createRndInteger(min, max){
 }
 
 
-//output winner of a given round of RPS 
+// Output winner of a given round of RPS - redundant due to rpsWinner function
 function playRound(playerSelection, computerSelection){
     playerSelection = playerSelection.toLowerCase();
     playerSelection = capitalizeFirstLetter(playerSelection);
     const result = rpsWinner(playerSelection, computerSelection);
     if(result==null){
-        console.log("Tie! Shoot again.");
         return null;
     }
     else if(result == true){
-        console.log(`You win the round! ${playerSelection} beats ${computerSelection}.`);
         return true;
     }
     else{
-        console.log(`You lose the round! ${computerSelection} beats ${playerSelection}.`)
         return false;
     }
 }
 
 
-//helper function for playRound, determines winner of RPS round
+// Helper for playRound, determines winner of RPS round 
 function rpsWinner(playerSelection, computerSelection){
     const r = "Rock";
     const p = "Paper";
@@ -61,53 +58,15 @@ function rpsWinner(playerSelection, computerSelection){
 }
 
 
-//Helper to capitalize the first letter of a string
+// Helper - capitalize the first letter of a string
 function capitalizeFirstLetter(string){
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
-// Plays a best of 5 game based on player input
-// function game(){
-//     console.log("Time to play Rock Paper Scissors. The game is best of 5");
-//     let computerScore = 0;
-//     let playerScore = 0;
-//     let round = 1;
-//     while(round<=5){
-//         console.log(`Round ${round}`);
-//         let playerSelection =  window.prompt("Enter your selection: ");
-//         const computerSelection = computerPlay();
-//         const result = playRound(playerSelection, computerSelection);
-//         if(result==true){
-//             ++round;
-//             ++playerScore
-//         }
-//         if(result==false){
-//             ++round;
-//             ++computerScore
-//         }
-//     }
-//     if(playerScore==3){
-//         console.log("The computer wins the series 3-2!")
-//     }
-//     else{
-//         console.log("You win the series 3-2!")
-//     }
-// }
 
-// console.log(game())
+// UI
 
-// const playerSelection = window.prompt("Enter your selection: ")
-// console.log(playerSelection)
-// const computerSelection = computerPlay()
-// console.log(computerSelection)
-// console.log(rpsWinner("Paper", "Rock"))
-// console.log(createRndInteger(1,3))
-
-
-
-
-
-//UI
+// Initalize variables needed to make UI interactive 
 
 // select play buttons
 const rock = document.getElementById('rock');
@@ -120,7 +79,6 @@ let resultInfo = document.getElementById('resultInfo');
 let playerImage = document.getElementById('playerImage');
 let computerImage = document.getElementById('computerImage');
 
-
 // select score spans and initalize game score
 let pScore = document.getElementById('playerScore');
 let  cScore = document.getElementById('computerScore');
@@ -128,39 +86,13 @@ pScore.textContent=0;
 cScore.textContent=0;
 
 // select modal
-
 let modal = document.getElementById('modal');
 let description = document.getElementById('description');
 const replay = document.getElementById('replay');
 
 
-function endGame(playerScore, computerScore){
-    if(playerScore ==5){
-        modal.style.display = "block";
-        description.textContent = `You have defeated the computer!\n Final score: ${playerScore} - ${computerScore}`;
-    }
-    if(computerScore == 5){
-        modal.style.display = "block";
-        description.textContent = `You have been defeated.\n Final score: ${computerScore} - ${playerScore}`
-    }
-}
 
-replay.addEventListener('click', function (e) {
-    modal.style.display = "none";
-    playerScore=0;
-    computerScore=0;
-    playerImage.src='images/playerLoad.gif';
-    computerImage.src='images/villianLoad.gif';
-    playerImage.style.borderRadius = "50%";
-    computerImage.style.borderRadius = "50%";
-    pScore.textContent=0;
-    cScore.textContent=0;
-    roundResult.textContent = "Select Your Attack";
-    resultInfo.textContent = "The first player to score 5 points wins";
-  });
-
-
-
+// Add on-click attributes for each RPS move and call helpers to update game/UI
 rock.addEventListener('click', function (e) {
     const computerSelection = computerPlay();
     console.log(computerSelection);
@@ -184,14 +116,15 @@ scissors.addEventListener('click', function (e) {
 });
 
 
+
+// Wrapper function to cleanly call other helpers
 function  updateGame(result, playerSelection, computerSelection){
     updateImages(playerSelection, computerSelection);
     updateResult(result, playerSelection, computerSelection);
-    console.log(playerScore);
     endGame(playerScore,computerScore);
 }
 
-
+// Helper - update header to show results of round, update game score
 function updateResult(result, playerSelection, computerSelection){
     if(result){
         roundResult.textContent = "You won!";
@@ -212,6 +145,7 @@ function updateResult(result, playerSelection, computerSelection){
     }
 }
 
+// Helper to change selection for each gameplay round
 function updateImages(playerSelection, computerSelection){
     switch(playerSelection){
         case 'Rock':
@@ -244,12 +178,30 @@ function updateImages(playerSelection, computerSelection){
     }
 }
 
+// Check if game is over, call modal to screen
+function endGame(playerScore, computerScore){
+    if(playerScore ==5){
+        modal.style.display = "block";
+        description.textContent = `You have defeated the computer!\n Final score: ${playerScore} - ${computerScore}`;
+    }
+    if(computerScore == 5){
+        modal.style.display = "block";
+        description.textContent = `You have been defeated.\n Final score: ${computerScore} - ${playerScore}`
+    }
+}
 
 
-
-
-
-
-
-
-
+//  If user selects to play again, reset UI and game variables
+replay.addEventListener('click', function (e) {
+    modal.style.display = "none";
+    playerScore=0;
+    computerScore=0;
+    playerImage.src='images/playerLoad.gif';
+    computerImage.src='images/villianLoad.gif';
+    playerImage.style.borderRadius = "50%";
+    computerImage.style.borderRadius = "50%";
+    pScore.textContent=0;
+    cScore.textContent=0;
+    roundResult.textContent = "Select Your Attack";
+    resultInfo.textContent = "The first player to score 5 points wins";
+  });
