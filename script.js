@@ -117,8 +117,8 @@ const scissors =  document.getElementById('scissors');
 // select container contents
 let roundResult = document.getElementById('roundResult');
 let resultInfo = document.getElementById('resultInfo');
-// let playerImage = document.getElementById('playerImage');
-// let computerImage = document.getElementById('computerImage');
+let playerImage = document.getElementById('playerImage');
+let computerImage = document.getElementById('computerImage');
 
 
 
@@ -128,40 +128,102 @@ let resultInfo = document.getElementById('resultInfo');
 let pScore = document.getElementById('playerScore');
 let  cScore = document.getElementById('computerScore');
 
+pScore.textContent=0
+cScore.textContent=0
+
 console.log(playerScore)
 
 rock.addEventListener('click', function (e) {
     const computerSelection = computerPlay();
     console.log(computerSelection);
-    const result = playRound('rock', computerSelection);
-    updateDisplay(result);
+    const result = playRound('Rock', computerSelection);
+    updateDisplay(result, 'Rock', computerSelection);
 
   });
 
 paper.addEventListener('click', function (e) {
     const computerSelection = computerPlay();
     console.log(computerSelection);
-    const result = playRound('paper', computerSelection);
+    const result = playRound('Paper', computerSelection);
+    updateDisplay(result, 'Paper', computerSelection);
 });
 
 scissors.addEventListener('click', function (e) {
     const computerSelection = computerPlay();
     console.log(computerSelection);
-    const result = playRound('scissors', computerSelection);
-
+    const result = playRound('Scissors', computerSelection);
+    updateDisplay(result, 'Scissors', computerSelection);
 });
 
-function updateDisplay(result){
+function updateDisplay(result, playerSelection, computerSelection){
+    updateImages(playerSelection, computerSelection);
+    updateResult(result, playerSelection, computerSelection);
+}
+
+function updateScore(result){
     if(result){
         ++playerScore;
+        pScore.textContent=0;
+        
     }
-    else if(!result){
+    else if(result==false){
         ++computerScore;
+        cScore.textContent= 0;
     }
     else{
 
     }
 }
+
+function updateResult(result, playerSelection, computerSelection){
+    if(result){
+        roundResult.textContent = "You won!";
+        resultInfo.textContent = `${playerSelection} beats ${computerSelection}`;
+
+        ++playerScore;
+        pScore.textContent=playerScore;
+
+    }
+    else if(result==false){
+        roundResult.textContent = "You lost";
+        resultInfo.textContent = `${computerSelection} beats ${playerSelection}`;
+
+        ++computerScore;
+        cScore.textContent= computerScore;
+    }
+    else{
+        roundResult.textContent = "Tie. Shoot again.";
+        resultInfo.textContent = '';
+    }
+}
+
+function updateImages(playerSelection, computerSelection){
+    switch(playerSelection){
+        case 'Rock':
+            playerImage.src='images/rock.png';
+            break;
+        case 'Paper':
+            playerImage.src='images/paper.png';
+            break;
+        case 'Scissors':
+            playerImage.src='images/scissors.png';
+            break;
+    }
+    console.log(computerSelection);
+    switch(computerSelection){
+        case 'Rock':
+            computerImage.src='images/rock.png';
+            break;
+        case 'Paper':
+            computerImage.src='images/paper.png';
+            break;
+        case 'Scissors':
+            computerImage.src='images/scissors.png';
+            break;
+    }
+}
+
+
 
 
 

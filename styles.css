@@ -42,6 +42,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    
 }
 
 .load{
@@ -93,7 +94,7 @@ button{
 
 button:hover{
     /* consider changing border color */
-    border: 4px solid #7925adf6;
+    border: 4px solid;
     border-radius: 20%;
     transition-duration: .15s;
 }
