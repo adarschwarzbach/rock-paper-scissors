@@ -115,6 +115,14 @@ const paper = document.getElementById('paper');
 const scissors =  document.getElementById('scissors');
 
 // select container contents
+let roundResult = document.getElementById('roundResult');
+let resultInfo = document.getElementById('resultInfo');
+// let playerImage = document.getElementById('playerImage');
+// let computerImage = document.getElementById('computerImage');
+
+
+
+
 
 // select score spans
 let pScore = document.getElementById('playerScore');
@@ -126,6 +134,7 @@ rock.addEventListener('click', function (e) {
     const computerSelection = computerPlay();
     console.log(computerSelection);
     const result = playRound('rock', computerSelection);
+    updateDisplay(result);
 
   });
 
@@ -139,16 +148,28 @@ scissors.addEventListener('click', function (e) {
     const computerSelection = computerPlay();
     console.log(computerSelection);
     const result = playRound('scissors', computerSelection);
+
+});
+
+function updateDisplay(result){
     if(result){
         ++playerScore;
     }
     else if(!result){
-        ++computerScore
+        ++computerScore;
     }
     else{
 
     }
-});
+}
+
+
+
+function endGame(){
+    if(Math.max(playerScore,computerScore)=5){
+
+    }
+}
 
 
 

@@ -68,13 +68,18 @@ button{
     padding: 16px;
     background: linear-gradient(-45deg, #284768, #e73c7e, #23a6d5, #7925adf6, #1c1facf6);
     background-size: 300% 200%;
-    animation: gradient 15s ease infinite;
+    animation: gradient 10s ease infinite;
     border: 8px black solid;
     border-radius: 15%;
     width: 150px;
+    cursor: pointer;
+    transition-duration: .4s;
+    -webkit-transition-duration: .4s;
+    position: relative;
 }
 
-/* @keyframes gradient {
+
+@keyframes gradient {
     0% {
         background-position: 0% 50%;
     }
@@ -84,12 +89,46 @@ button{
     100% {
         background-position: 0% 50%;
     }
-} */
+}
+
+button:hover{
+    /* consider changing border color */
+    border: 2px solid #23a6d5;
+    border-radius: 20%;
+    transition-duration: .15s;
+}
+
+  
+button:after{
+    content: "";
+    display: flex;
+    position: absolute;
+    border-radius: 20%;
+    left: 0;
+    top: 0;
+    width: 150px;
+    height: 150px;
+    opacity: 0%;
+    transition: all .4s;
+    box-shadow: 0 0 8px 16px white;
+}
+
+button:active:after{
+    display: flex;
+    position: inline;
+    border-radius: 20%;
+    left: 0;
+    top:0;
+    box-shadow: 0 0 0 0 white;
+    opacity: 1;
+    transition: 0s;
+}
+
 
 
 body{
     margin: 0px;
-    background-color: #a7a7b6;
+    background-color: #19193fdc;
     font-family: OCR A Std, monospace;
     color: #d1f7ff;
     font-size: 24px;
